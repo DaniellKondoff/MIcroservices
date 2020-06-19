@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services
+﻿namespace CarRentalSystem.Dealers.Services
 {
     using System.Linq;
     using System.Threading.Tasks;
@@ -7,9 +7,9 @@
     public abstract class DataService<TEntity> : IDataService<TEntity>
         where TEntity : class
     {
-        protected DataService(CarRentalDbContext db) => this.Data = db;
+        protected DataService(DealersDbContext db) => this.Data = db;
 
-        protected CarRentalDbContext Data { get; }
+        protected DealersDbContext Data { get; }
 
         protected IQueryable<TEntity> All() => this.Data.Set<TEntity>();
 

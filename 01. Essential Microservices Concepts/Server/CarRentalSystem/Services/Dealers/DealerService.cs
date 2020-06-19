@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.Dealers
+﻿namespace CarRentalSystem.Dealers.Services.Dealers
 {
     using System;
     using System.Linq;
@@ -14,7 +14,7 @@
     {
         private readonly IMapper mapper;
 
-        public DealerService(CarRentalDbContext db, IMapper mapper)
+        public DealerService(DealersDbContext db, IMapper mapper)
             : base(db)
             => this.mapper = mapper;
 
@@ -25,6 +25,8 @@
                 .AnyAsync(d => d.CarAds
                     .Any(c => c.Id == carAdId));
 
+        public async Task<bool> IsDealer(string userId)
+            => await this.All().AnyAsync(d => d.UserId == userId);
         public async Task<DealerDetailsOutputModel> GetDetails(int id)
             => await this.mapper
                 .ProjectTo<DealerDetailsOutputModel>(this

@@ -1,10 +1,10 @@
-﻿namespace CarRentalSystem.Data.Configurations
+﻿namespace CarRentalSystem.Dealers.Data.Configurations
 {
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
     using Models;
 
-    using static DataConstants.Common;
+    using static Common.Data.DataConstants.Common;
     using static DataConstants.Dealer;
 
     internal class DealerConfiguration : IEntityTypeConfiguration<Dealer>
@@ -25,11 +25,8 @@
                 .HasMaxLength(MaxPhoneNumberLength);
 
             builder
-                .HasOne(d => d.User)
-                .WithOne(u => u.Dealer)
-                .HasForeignKey<Dealer>(u => u.UserId)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+                .Property(d => d.UserId)
+                .IsRequired();
 
             builder
                 .HasMany(d => d.CarAds)

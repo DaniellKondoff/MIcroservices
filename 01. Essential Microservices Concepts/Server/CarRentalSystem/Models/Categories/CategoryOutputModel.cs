@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Models.Categories
+﻿namespace CarRentalSystem.Dealers.Models.Categories
 {
     using System.Linq;
     using AutoMapper;

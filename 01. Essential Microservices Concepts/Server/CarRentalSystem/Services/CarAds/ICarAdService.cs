@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.CarAds
+﻿namespace CarRentalSystem.Dealers.Services.CarAds
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

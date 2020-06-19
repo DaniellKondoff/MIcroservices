@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.Manufacturers
+﻿namespace CarRentalSystem.Dealers.Services.Manufacturers
 {
     using System.Threading.Tasks;
     using Data.Models;

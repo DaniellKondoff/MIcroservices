@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Data.Models
+﻿namespace CarRentalSystem.Dealers.Data.Models
 {
     using System.Collections.Generic;
 
@@ -11,8 +11,6 @@
         public string PhoneNumber { get; set; }
 
         public string UserId { get; set; }
-
-        public User User { get; set; }
 
         public ICollection<CarAd> CarAds { get; set; } = new List<CarAd>();
     }

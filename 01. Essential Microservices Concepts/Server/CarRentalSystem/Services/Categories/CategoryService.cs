@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.Categories
+﻿namespace CarRentalSystem.Dealers.Services.Categories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -12,7 +12,7 @@
     {
         private readonly IMapper mapper;
 
-        public CategoryService(CarRentalDbContext db, IMapper mapper) 
+        public CategoryService(DealersDbContext db, IMapper mapper) 
             : base(db) 
             => this.mapper = mapper;
 

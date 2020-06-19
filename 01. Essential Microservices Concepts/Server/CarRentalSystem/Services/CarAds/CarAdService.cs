@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.CarAds
+﻿namespace CarRentalSystem.Dealers.Services.CarAds
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -15,7 +15,7 @@
 
         private readonly IMapper mapper;
 
-        public CarAdService(CarRentalDbContext db, IMapper mapper)
+        public CarAdService(DealersDbContext db, IMapper mapper)
             : base(db)
             => this.mapper = mapper;
 

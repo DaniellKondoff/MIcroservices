@@ -1,18 +1,19 @@
-﻿namespace CarRentalSystem.Controllers
+﻿namespace CarRentalSystem.Dealers.Controllers
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    using CarRentalSystem.Common.Controllers;
+    using CarRentalSystem.Common.Services;
+    using CarRentalSystem.Common.Services.Identity;
     using Data.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models.CarAds;
     using Models.Categories;
-    using Services;
     using Services.CarAds;
     using Services.Categories;
     using Services.Dealers;
-    using Services.Identity;
     using Services.Manufacturers;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public class CarAdsController : ApiController
     {

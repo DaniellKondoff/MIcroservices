@@ -1,9 +1,9 @@
-﻿namespace CarRentalSystem.Models.CarAds
+﻿namespace CarRentalSystem.Dealers.Models.CarAds
 {
     using System.ComponentModel.DataAnnotations;
     using Data.Models;
 
-    using static Data.DataConstants.Common;
+    using static Common.Data.DataConstants.Common;
     using static Data.DataConstants.CarAd;
     using static Data.DataConstants.Options;
 

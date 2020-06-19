@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.Manufacturers
+﻿namespace CarRentalSystem.Dealers.Services.Manufacturers
 {
     using System.Threading.Tasks;
     using Data;
@@ -7,7 +7,7 @@
 
     public class ManufacturerService : DataService<Manufacturer>, IManufacturerService
     {
-        public ManufacturerService(CarRentalDbContext db) 
+        public ManufacturerService(DealersDbContext db) 
             : base(db)
         {
         }

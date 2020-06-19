@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.Categories
+﻿namespace CarRentalSystem.Dealers.Services.Categories
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;

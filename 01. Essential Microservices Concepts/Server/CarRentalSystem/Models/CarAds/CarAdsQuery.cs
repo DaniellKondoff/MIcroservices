@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Models.CarAds
+﻿namespace CarRentalSystem.Dealers.Models.CarAds
 {
     public class CarAdsQuery
     {

@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Data.Models
+﻿namespace CarRentalSystem.Dealers.Data.Models
 {
     public class CarAd
     {
@@ -11,6 +11,8 @@
         public decimal PricePerDay { get; set; }
 
         public Options Options { get; set; }
+
+        public string Location { get; set; }
 
         public bool IsAvailable { get; set; }
 

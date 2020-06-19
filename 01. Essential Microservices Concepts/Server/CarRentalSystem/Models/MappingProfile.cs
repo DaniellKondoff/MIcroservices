@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Models
+﻿namespace CarRentalSystem.Dealers.Models
 {
     using System;
     using System.Linq;

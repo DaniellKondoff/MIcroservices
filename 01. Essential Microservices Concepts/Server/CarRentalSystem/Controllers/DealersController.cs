@@ -1,11 +1,14 @@
-﻿namespace CarRentalSystem.Controllers
+﻿namespace CarRentalSystem.Dealers.Controllers
 {
     using System.Threading.Tasks;
+    using CarRentalSystem.Common.Controllers;
+    using CarRentalSystem.Common.Services;
+    using CarRentalSystem.Common.Services.Identity;
+    using CarRentalSystem.Dealers.Data.Models;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models.Dealers;
-    using Services;
     using Services.Dealers;
-    using Services.Identity;
 
     public class DealersController : ApiController
     {
@@ -24,6 +27,38 @@
         [Route(Id)]
         public async Task<ActionResult<DealerDetailsOutputModel>> Details(int id)
             => await this.dealers.GetDetails(id);
+
+        [HttpGet]
+        [Authorize]
+        [Route("Id")]
+        public async Task<ActionResult<int>> GetDealerId()
+        {
+            var userId = this.currentUser.UserId;
+
+            var userIsDealer = await this.dealers.IsDealer(userId);
+            if (!userIsDealer)
+            {
+                return BadRequest("This user is not a dealer.");
+            }
+
+            return await this.dealers.GetIdByUser(userId);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult> Create(CreateDealerInputModel input)
+        {
+            var dealer = new Dealer
+            {
+                Name = input.Name,
+                PhoneNumber = input.PhoneNumber,
+                UserId = this.currentUser.UserId
+            };
+
+            await this.dealers.Save(dealer);
+
+            return Ok();
+        }
 
         [HttpPut]
         [Route(Id)]

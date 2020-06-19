@@ -1,8 +1,8 @@
-﻿namespace CarRentalSystem.Models.Dealers
+﻿namespace CarRentalSystem.Dealers.Models.Dealers
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static Data.DataConstants.Common;
+    using static Common.Data.DataConstants.Common;
     using static Data.DataConstants.Dealer;
 
     public class EditDealerInputModel

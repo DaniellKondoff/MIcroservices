@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Data.Models
+﻿namespace CarRentalSystem.Dealers.Data.Models
 {
     using System.Collections.Generic;
 

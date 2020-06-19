@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Data.Models
+﻿namespace CarRentalSystem.Dealers.Data.Models
 {
     public class Options
     {

@@ -1,4 +1,4 @@
-﻿namespace CarRentalSystem.Services.Dealers
+﻿namespace CarRentalSystem.Dealers.Services.Dealers
 {
     using System.Threading.Tasks;
     using Data.Models;
@@ -15,5 +15,6 @@
         Task<DealerDetailsOutputModel> GetDetails(int id);
 
         Task<DealerOutputModel> GetDetailsByCarId(int carAdId);
+        Task<bool> IsDealer(string userId);
     }
 }

@@ -1,10 +1,10 @@
-﻿namespace CarRentalSystem.Data.Configurations
+﻿namespace CarRentalSystem.Dealers.Data.Configurations
 {
     using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    using static DataConstants.Common;
+    using static Common.Data.DataConstants.Common;
 
     internal class ManufacturerConfiguration : IEntityTypeConfiguration<Manufacturer>
     {
