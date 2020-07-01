@@ -22,8 +22,7 @@ namespace CarRentalSystem.Identity
                 .AddWebService<IdentityDbContext>(this.Configuration)
                 .AddIdentitySettings()
                 .AddTransient<IIdentityService, IdentityService>()
-                .AddTransient<IJwtTokenGeneratorService, JwtTokenGeneratorService>()
-                .AddControllers();
+                .AddTransient<IJwtTokenGeneratorService, JwtTokenGeneratorService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

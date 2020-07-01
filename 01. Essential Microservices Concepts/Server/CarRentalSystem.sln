@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Identity", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Common", "CarRentalSystem.Common\CarRentalSystem.Common.csproj", "{E59184C1-9C58-466A-A729-DCD0C04CE611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalSystem.Statistics", "CarRentalSystem.Statistics\CarRentalSystem.Statistics.csproj", "{7BFE7C78-52B7-4971-8172-CDF7958D303D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Statistics", "CarRentalSystem.Statistics\CarRentalSystem.Statistics.csproj", "{7BFE7C78-52B7-4971-8172-CDF7958D303D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalSystem.Schedule", "CarRentalSystem.Schedule\CarRentalSystem.Schedule.csproj", "{9E1062AA-B908-4BE6-9A3D-F1042DD357C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Schedule", "CarRentalSystem.Schedule\CarRentalSystem.Schedule.csproj", "{9E1062AA-B908-4BE6-9A3D-F1042DD357C6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Admin", "CarRentalSystem.Admin\CarRentalSystem.Admin.csproj", "{BA732FDF-A00C-42EB-B5F1-AE5EC78C60AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalSystem.Gateway", "CarRentalSystem.Gateway\CarRentalSystem.Gateway.csproj", "{13421181-10AB-474E-BD25-F25674803B70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{9E1062AA-B908-4BE6-9A3D-F1042DD357C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E1062AA-B908-4BE6-9A3D-F1042DD357C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E1062AA-B908-4BE6-9A3D-F1042DD357C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA732FDF-A00C-42EB-B5F1-AE5EC78C60AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA732FDF-A00C-42EB-B5F1-AE5EC78C60AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA732FDF-A00C-42EB-B5F1-AE5EC78C60AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA732FDF-A00C-42EB-B5F1-AE5EC78C60AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13421181-10AB-474E-BD25-F25674803B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13421181-10AB-474E-BD25-F25674803B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13421181-10AB-474E-BD25-F25674803B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13421181-10AB-474E-BD25-F25674803B70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

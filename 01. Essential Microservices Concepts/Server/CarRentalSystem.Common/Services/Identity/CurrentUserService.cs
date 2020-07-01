@@ -2,13 +2,15 @@
 {
     using System;
     using System.Security.Claims;
+    using CarRentalSystem.Common.Infrastructure;
     using Microsoft.AspNetCore.Http;
 
     public class CurrentUserService : ICurrentUserService
     {
+        private readonly ClaimsPrincipal user;
         public CurrentUserService(IHttpContextAccessor httpContextAccessor)
         {
-            var user = httpContextAccessor.HttpContext?.User;
+            user = httpContextAccessor.HttpContext?.User;
 
             if (user == null)
             {
@@ -19,5 +21,7 @@
         }
 
         public string UserId { get; }
+
+        public bool IsAdministrator => user.IsAdministrator();
     }
 }

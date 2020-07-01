@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CarRentalSystem.Common.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +39,13 @@ namespace CarRentalSystem.Common.Infrastructure
             var db = serviceProvider.GetRequiredService<TDbContext>();
 
             db.Database.Migrate();
+
+            var seeders = serviceProvider.GetServices<IDataSeeder>();
+
+            foreach (var seeder in seeders)
+            {
+                seeder.SeedData();
+            }
 
             return app;
         }

@@ -1,12 +1,15 @@
 ﻿namespace CarRentalSystem.Dealers.Services.Dealers
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Data.Models;
     using Models.Dealers;
 
     public interface IDealerService : IDataService<Dealer>
     {
+        Task<IEnumerable<DealerDetailsOutputModel>> GetAll();
         Task<Dealer> FindByUser(string userId);
+        Task<Dealer> FindById(int Id);
 
         Task<int> GetIdByUser(string userId);
 

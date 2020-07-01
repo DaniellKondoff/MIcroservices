@@ -25,8 +25,7 @@ namespace CarRentalSystem.Statistics
                 .AddWebService<StatisticsDbContext>(this.Configuration)
                 .AddTransient<IDataSeeder, StatisticsDataSeeder>()
                 .AddTransient<IStatisticsService, StatisticsService>()
-                .AddTransient<ICarAdViewService, CarAdViewService>()
-                .AddControllers();
+                .AddTransient<ICarAdViewService, CarAdViewService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

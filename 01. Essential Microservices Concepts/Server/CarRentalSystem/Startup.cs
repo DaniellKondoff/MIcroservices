@@ -25,12 +25,10 @@ namespace CarRentalSystem.Dealers
         {
             services
                 .AddWebService<DealersDbContext>(this.Configuration)
-                .AddAutoMapper(Assembly.GetExecutingAssembly())
                 .AddTransient<IDealerService, DealerService>()
                 .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<ICarAdService, CarAdService>()
-                .AddTransient<IManufacturerService, ManufacturerService>()
-                .AddControllers();
+                .AddTransient<IManufacturerService, ManufacturerService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

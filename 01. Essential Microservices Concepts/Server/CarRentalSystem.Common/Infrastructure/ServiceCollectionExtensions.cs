@@ -4,7 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Reflection;
 using System.Text;
+using AutoMapper;
+using CarRentalSystem.Common.Models;
 
 namespace CarRentalSystem.Common.Infrastructure
 {
@@ -16,7 +20,9 @@ namespace CarRentalSystem.Common.Infrastructure
             services
                 .AddDatabase<TDbContext>(configuration)
                 .AddApplicationSettings(configuration)
-                .AddTokenAuthentication(configuration);
+                .AddTokenAuthentication(configuration)
+                .AddAutoMapperProfile(Assembly.GetCallingAssembly())
+                .AddControllers();
 
             return services;
         }
@@ -70,5 +76,14 @@ namespace CarRentalSystem.Common.Infrastructure
 
             return services;
         }
+
+        public static IServiceCollection AddAutoMapperProfile(
+            this IServiceCollection services,
+            Assembly assembly)
+            => services
+                .AddAutoMapper(
+                    (_, config) => config
+                        .AddProfile(new MappingProfile(assembly)),
+                    Array.Empty<Assembly>());
     }
 }

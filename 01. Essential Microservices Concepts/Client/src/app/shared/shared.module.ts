@@ -35,11 +35,6 @@ import { PaginationComponent } from './pagination/pagination.component';
       useClass: InterceptorService,
       multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptorService,
-      multi: true
-    },
     RouterExtService,
   ],
   exports: [ReactiveFormsModule,    FormsModule,
