@@ -1,9 +1,11 @@
 ﻿namespace CarRentalSystem.Dealers.Controllers
 {
     using CarRentalSystem.Common.Controllers;
+    using CarRentalSystem.Common.Messages.Dealers;
     using CarRentalSystem.Common.Services;
     using CarRentalSystem.Common.Services.Identity;
     using Data.Models;
+    using MassTransit;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models.CarAds;
@@ -22,19 +24,22 @@
         private readonly ICategoryService categories;
         private readonly IManufacturerService manufacturers;
         private readonly ICurrentUserService currentUser;
+        private readonly IBus publisher;
 
         public CarAdsController(
             ICarAdService carAds, 
             IDealerService dealers,
             ICategoryService categories,
             IManufacturerService manufacturers,
-            ICurrentUserService currentUser)
+            ICurrentUserService currentUser,
+            IBus publisher)
         {
             this.carAds = carAds;
             this.dealers = dealers;
             this.categories = categories;
             this.manufacturers = manufacturers;
             this.currentUser = currentUser;
+            this.publisher = publisher;
         }
 
         [HttpGet]
@@ -91,6 +96,14 @@
 
             await this.carAds.Save(carAd);
 
+            await this.publisher.Publish(new CarAddCreatedMessage
+            {
+                CarAddId = carAd.Id,
+                Manufacturer = carAd.Manufacturer.Name,
+                Model = carAd.Model,
+                Price = carAd.PricePerDay
+            });
+
             return new CreateCarAdOutputModel(carAd.Id);
         }
 
@@ -132,6 +145,13 @@
             };
 
             await this.carAds.Save(carAd);
+
+            await this.publisher.Publish(new CarAddUpdatedMesage
+            {
+                CarAddId = carAd.Id,
+                Manufacturer = carAd.Manufacturer.Name,
+                Model = carAd.Model
+            });
 
             return Result.Success;
         }

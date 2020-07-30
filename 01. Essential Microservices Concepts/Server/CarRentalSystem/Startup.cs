@@ -1,6 +1,5 @@
 namespace CarRentalSystem.Dealers
 {
-    using AutoMapper;
     using CarRentalSystem.Common.Infrastructure;
     using Data;
     using Infrastructure;
@@ -12,7 +11,6 @@ namespace CarRentalSystem.Dealers
     using Services.Categories;
     using Services.Dealers;
     using Services.Manufacturers;
-    using System.Reflection;
 
     public class Startup
     {
@@ -28,7 +26,8 @@ namespace CarRentalSystem.Dealers
                 .AddTransient<IDealerService, DealerService>()
                 .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<ICarAdService, CarAdService>()
-                .AddTransient<IManufacturerService, ManufacturerService>();
+                .AddTransient<IManufacturerService, ManufacturerService>()
+                .AddMessaging();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -9,12 +9,14 @@ using System.Reflection;
 using System.Text;
 using AutoMapper;
 using CarRentalSystem.Common.Models;
+using MassTransit;
+using System.Threading.Tasks;
 
 namespace CarRentalSystem.Common.Infrastructure
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddWebService<TDbContext>(this  IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddWebService<TDbContext>(this IServiceCollection services, IConfiguration configuration)
             where TDbContext : DbContext
         {
             services
@@ -27,7 +29,7 @@ namespace CarRentalSystem.Common.Infrastructure
             return services;
         }
         public static IServiceCollection AddDatabase<TDbContext>(this IServiceCollection services, IConfiguration configuration)
-            where TDbContext: DbContext
+            where TDbContext : DbContext
         {
             services
                .AddScoped<DbContext, TDbContext>()
@@ -39,12 +41,12 @@ namespace CarRentalSystem.Common.Infrastructure
 
         public static IServiceCollection AddApplicationSettings(this IServiceCollection services, IConfiguration configuration)
         {
-           return services
-                .Configure<ApplicationSettings>(configuration
-                    .GetSection(nameof(ApplicationSettings)));
+            return services
+                 .Configure<ApplicationSettings>(configuration
+                     .GetSection(nameof(ApplicationSettings)));
         }
 
-        public static IServiceCollection AddTokenAuthentication(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddTokenAuthentication(this IServiceCollection services, IConfiguration configuration, JwtBearerEvents events = null)
         {
             var secret = configuration
                 .GetSection(nameof(ApplicationSettings))
@@ -69,6 +71,26 @@ namespace CarRentalSystem.Common.Infrastructure
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
+
+                    if(events != null)
+                    {
+                        bearer.Events = events;
+                    }
+
+                    bearer.Events = new JwtBearerEvents
+                    {
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["acess_token"];
+
+                            var path = context.HttpContext.Request.Path;
+                            if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/notifications"))
+                            {
+                                context.Token = accessToken;
+                            }
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             services.AddHttpContextAccessor();
@@ -85,5 +107,27 @@ namespace CarRentalSystem.Common.Infrastructure
                     (_, config) => config
                         .AddProfile(new MappingProfile(assembly)),
                     Array.Empty<Assembly>());
+
+        public static IServiceCollection AddMessaging(this IServiceCollection services, params Type[] consumers)
+        {
+            services.AddMassTransit(mt =>
+            {
+                consumers.ForEach(consumer => mt.AddConsumer(consumer));
+
+                mt.AddBus(bus => Bus.Factory.CreateUsingRabbitMq(rmq =>
+                {
+                    rmq.Host("localhost");
+
+                    consumers.ForEach(consumer => rmq.ReceiveEndpoint(consumer.FullName, endpoint =>
+                    {
+                        endpoint.ConfigureConsumer(bus, consumer);
+                    }));
+
+                }));
+            })
+            .AddMassTransitHostedService();
+
+            return services;
+        }
     }
 }

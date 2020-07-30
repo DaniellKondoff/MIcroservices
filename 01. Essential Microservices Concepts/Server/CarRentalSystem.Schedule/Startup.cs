@@ -1,8 +1,11 @@
+using CarRentalSystem.Common.Infrastructure;
+using CarRentalSystem.Schedule.Data;
+using CarRentalSystem.Schedule.Messages;
+using CarRentalSystem.Schedule.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace CarRentalSystem.Schedule
 {
@@ -17,26 +20,17 @@ namespace CarRentalSystem.Schedule
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services
+                .AddWebService<ScheduleDbContext>(Configuration)
+                .AddTransient<IRentedCarService, RentedCarService>()
+                .AddMessaging(typeof(CarAddUpdatedConsumer));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app
+               .UseWebService(env)
+               .Initialize<ScheduleDbContext>();
         }
     }
 }

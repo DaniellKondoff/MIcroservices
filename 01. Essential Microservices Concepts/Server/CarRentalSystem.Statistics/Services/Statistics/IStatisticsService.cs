@@ -6,5 +6,7 @@ namespace CarRentalSystem.Statistics.Services.Statistics
     public interface IStatisticsService
     {
         Task<StatisticsOutputModel> Full();
+
+        Task AddCarAd();
     }
 }

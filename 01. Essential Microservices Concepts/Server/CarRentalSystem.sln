@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Schedule", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Admin", "CarRentalSystem.Admin\CarRentalSystem.Admin.csproj", "{BA732FDF-A00C-42EB-B5F1-AE5EC78C60AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalSystem.Gateway", "CarRentalSystem.Gateway\CarRentalSystem.Gateway.csproj", "{13421181-10AB-474E-BD25-F25674803B70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarRentalSystem.Gateway", "CarRentalSystem.Gateway\CarRentalSystem.Gateway.csproj", "{13421181-10AB-474E-BD25-F25674803B70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRentalSystem.Notifications", "CarRentalSystem.Notifications\CarRentalSystem.Notifications.csproj", "{7AC77751-4FAB-4AD2-877E-314628276D23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{13421181-10AB-474E-BD25-F25674803B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13421181-10AB-474E-BD25-F25674803B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13421181-10AB-474E-BD25-F25674803B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC77751-4FAB-4AD2-877E-314628276D23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC77751-4FAB-4AD2-877E-314628276D23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC77751-4FAB-4AD2-877E-314628276D23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC77751-4FAB-4AD2-877E-314628276D23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
