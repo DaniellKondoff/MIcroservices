@@ -59,7 +59,7 @@
             => await this.carAds.GetDetails(id);
 
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<CreateCarAdOutputModel>> Create(CarAdInputModel input)
         {
             var dealer = await this.dealers.FindByUser(this.currentUser.UserId);

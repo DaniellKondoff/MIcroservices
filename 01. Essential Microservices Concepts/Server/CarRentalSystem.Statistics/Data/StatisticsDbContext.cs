@@ -10,9 +10,9 @@
         {
         }
 
-        public DbSet<CarAddView> CarAdViews { get; set; }
+        public virtual DbSet<CarAddView> CarAdViews { get; set; }
 
-        public DbSet<Statistics> Statistics { get; set; }
+        public virtual DbSet<Statistics> Statistics { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
